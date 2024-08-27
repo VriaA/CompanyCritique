@@ -46,7 +46,7 @@ export default function Home() {
           <nav className="font-inter text-sm w-full">
             {/* Add your sidebar items here */}
             <button className="mb-5 w-full text-left flex items-center justify-start hover:bg-gray-100 rounded-lg transition duration-150 ease-in-out p-2">
-              <img src="/images/ChatText.svg" alt="Google" className="w-5 h-5 mr-2" />
+              <img src={darkMode ? "/images/ChatText_dark.svg" : "/images/ChatText.svg"} alt="Google" className="w-5 h-5 mr-2" />
               Current Chat
             </button>
           </nav>
@@ -54,7 +54,7 @@ export default function Home() {
           <div className="flex flex-col items-center justify-center font-inter text-sm w-full mt-8">
             {/* Add bottom sidebar items here */}
             <button className="mb-4 w-full text-left flex items-center justify-start hover:bg-gray-100 rounded-lg transition duration-150 ease-in-out p-2">
-              <img src={darkMode ? "/images/delete.svg" : "/images/delete.svg"} alt="Clear" className="w-5 h-5 mr-2" />
+              <img src={darkMode ? "/images/delete_dark.svg" : "/images/delete.svg"} alt="Clear" className="w-5 h-5 mr-2" />
               Clear conversations
             </button>
             <button onClick={toggleDarkMode} className="mb-4 w-full text-left flex items-center justify-start hover:bg-gray-100 rounded-lg transition duration-150 ease-in-out p-2">
@@ -62,7 +62,7 @@ export default function Home() {
               {darkMode ? "Dark mode" : "Light mode"}
             </button>
             <button className="w-full flex items-center justify-start hover:bg-gray-100 rounded-lg transition duration-150 ease-in-out p-2">
-                <img src="/images/signOut.svg" alt="Light mode" className="w-5 h-5 mr-2" />
+                <img src={darkMode ? "/images/signOut_dark.svg" : "/images/signOut.svg"} alt="Light mode" className="w-5 h-5 mr-2" />
                 Learn More
               </button>
           </div>
