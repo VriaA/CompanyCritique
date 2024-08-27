@@ -81,17 +81,17 @@ function HomeContent() {
   
           {/* Button container */}
           <div className="flex flex-col lg:flex-row w-full max-w-4xl space-y-4 lg:space-y-0 lg:space-x-4">
-            <button onClick={() => handleButtonClick("How much is an average software engineer paid at....")} className="relative p-[1px] bg-gradient-to-r from-[#5661F6] via-[#8091F6] to-[#F6A856] rounded-lg w-full">
+            <button onClick={() => handleButtonClick("How much is an average software engineer at Amazon paid?")} className="relative p-[1px] bg-gradient-to-r from-[#5661F6] via-[#8091F6] to-[#F6A856] rounded-lg w-full">
               <span className={`block ${darkMode ? 'bg-[#111111]' : 'bg-white'} px-3 py-2 rounded-lg text-sm text-left h-full flex items-center`}>
                 How much is an average software engineer at Amazon paid?
               </span>
             </button>
-            <button onClick={() => handleButtonClick("Level of diversity among workers at ....")} className="relative p-[1px] bg-gradient-to-r from-[#5661F6] via-[#8091F6] to-[#F6A856] rounded-lg w-full">
+            <button onClick={() => handleButtonClick("Level of diversity among workers at Meta")} className="relative p-[1px] bg-gradient-to-r from-[#5661F6] via-[#8091F6] to-[#F6A856] rounded-lg w-full">
               <span className={`block ${darkMode ? 'bg-[#111111]' : 'bg-white'} px-3 py-2 rounded-lg text-sm text-left h-full flex items-center`}>
                 Level of diversity among workers at Meta
               </span>
             </button>
-            <button onClick={() => handleButtonClick("Benefits for employees working at ...")} className="relative p-[1px] bg-gradient-to-r from-[#5661F6] via-[#8091F6] to-[#F6A856] rounded-lg w-full">
+            <button onClick={() => handleButtonClick("Benefits for employees working at Headstarter")} className="relative p-[1px] bg-gradient-to-r from-[#5661F6] via-[#8091F6] to-[#F6A856] rounded-lg w-full">
               <span className={`block ${darkMode ? 'bg-[#111111]' : 'bg-white'} px-3 py-2 rounded-lg text-sm text-left h-full flex items-center`}>
                 Benefits for employees working at Headstarter
               </span>
