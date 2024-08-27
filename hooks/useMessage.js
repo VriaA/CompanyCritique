@@ -15,9 +15,11 @@ export default function useMessage() {
   }, [messages])
 
   async function sendMessage(event) {
-    event.preventDefault()
+    if (event && event.preventDefault) {
+      event.preventDefault();
+    }
 
-    if (!message.trim()) return
+    if (!message.trim()) return;
 
     setMessage("") // Clear the message after it's sent
     setMessages((messages) => [
