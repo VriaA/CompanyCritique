@@ -7,6 +7,14 @@ import { useState, useEffect, useContext } from 'react';
 //import SearchField from "@/components/SearchField";
 
 export default function Home() {
+  return (
+    <MessagesContextProvider>
+      <HomeContent />
+    </MessagesContextProvider>
+  );
+}
+
+function HomeContent() {
   const [darkMode, setDarkMode] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
@@ -43,6 +51,13 @@ export default function Home() {
     window.location.reload();
   };
 
+  const handleButtonClick = (message) => {
+    if (messagesContext) {
+      messagesContext.setMessage(message);
+      messagesContext.sendMessage();
+    }
+  };
+
   return (
     <div className={`flex flex-col h-screen ${darkMode ? 'bg-[#111111] text-white' : 'bg-gray-100'}`}>
       {/* Hamburger menu for mobile */}
@@ -66,17 +81,17 @@ export default function Home() {
   
           {/* Button container */}
           <div className="flex flex-col lg:flex-row w-full max-w-4xl space-y-4 lg:space-y-0 lg:space-x-4">
-            <button onClick={() => document.querySelector('input').value = "How much is an average software engineer paid at...."} className="relative p-[1px] bg-gradient-to-r from-[#5661F6] via-[#8091F6] to-[#F6A856] rounded-lg w-full">
+            <button onClick={() => handleButtonClick("How much is an average software engineer paid at....")} className="relative p-[1px] bg-gradient-to-r from-[#5661F6] via-[#8091F6] to-[#F6A856] rounded-lg w-full">
               <span className={`block ${darkMode ? 'bg-[#111111]' : 'bg-white'} px-3 py-2 rounded-lg text-sm text-left h-full flex items-center`}>
                 How much is an average software engineer at Amazon paid?
               </span>
             </button>
-            <button onClick={() => document.querySelector('input').value = "Level of diversity among workers at ...."} className="relative p-[1px] bg-gradient-to-r from-[#5661F6] via-[#8091F6] to-[#F6A856] rounded-lg w-full">
+            <button onClick={() => handleButtonClick("Level of diversity among workers at ....")} className="relative p-[1px] bg-gradient-to-r from-[#5661F6] via-[#8091F6] to-[#F6A856] rounded-lg w-full">
               <span className={`block ${darkMode ? 'bg-[#111111]' : 'bg-white'} px-3 py-2 rounded-lg text-sm text-left h-full flex items-center`}>
                 Level of diversity among workers at Meta
               </span>
             </button>
-            <button onClick={() => document.querySelector('input').value = "Benefits for employees working at ..."} className="relative p-[1px] bg-gradient-to-r from-[#5661F6] via-[#8091F6] to-[#F6A856] rounded-lg w-full">
+            <button onClick={() => handleButtonClick("Benefits for employees working at ...")} className="relative p-[1px] bg-gradient-to-r from-[#5661F6] via-[#8091F6] to-[#F6A856] rounded-lg w-full">
               <span className={`block ${darkMode ? 'bg-[#111111]' : 'bg-white'} px-3 py-2 rounded-lg text-sm text-left h-full flex items-center`}>
                 Benefits for employees working at Headstarter
               </span>
@@ -86,9 +101,7 @@ export default function Home() {
 
         {/* Chat interface */}
         <main className="flex-1 flex flex-col mt-auto">
-          <MessagesContextProvider>
-            <Messages darkMode={darkMode} />
-          </MessagesContextProvider>
+          <Messages darkMode={darkMode} />
         </main>
       </div>
 
