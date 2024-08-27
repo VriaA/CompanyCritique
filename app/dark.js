@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 export default function Home() {
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div className="flex h-screen bg-#111111-100">
       {/* Sidebar */}
       <aside className="w-60 mt-8 mb-8 ml-5 p-[1px] bg-gradient-to-b from-[#5661F6] via-[#8091F6] to-[#F6A856] rounded-[30px] overflow-hidden">
         <div className="h-full bg-white p-4 flex flex-col items-center rounded-[29px]">
@@ -41,7 +41,7 @@ export default function Home() {
               <img src="/images/delete.svg" alt="Clear" className="w-5 h-5 mr-2" />
               Clear conversations
             </button>
-            <Link href="/dark_mode" className="mb-4 w-full text-left">
+            <Link href="/dark" className="mb-4 w-full text-left">
               <button className="w-full flex items-center justify-start hover:bg-gray-100 rounded-lg transition duration-150 ease-in-out p-2">
                 <img src="/images/sun-icon.svg" alt="Light mode" className="w-5 h-5 mr-2" />
                 Light mode
