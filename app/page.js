@@ -126,12 +126,10 @@ function HomeContent() {
           </button>
           <nav className="font-inter text-sm w-full">
             {/* Add your sidebar items here */}
-          <Link href="/">
-            <button className={`mb-5 w-full text-left flex items-center justify-start ${darkMode ? 'hover:bg-gray-800' : 'hover:bg-gray-100'} rounded-lg transition duration-150 ease-in-out p-2`}>
+            <Link href="/" className={`mb-5 w-full text-left flex items-center justify-start ${darkMode ? 'hover:bg-gray-800' : 'hover:bg-gray-100'} rounded-lg transition duration-150 ease-in-out p-2`}>
               <img src={darkMode ? "/images/ChatText_dark.svg" : "/images/ChatText.svg"} alt="Google" className="w-5 h-5 mr-2" />
               Current Chat
-            </button>
-          </Link>
+            </Link>
           </nav>
           <div className="flex-grow"></div>
           <div className="flex flex-col items-center justify-center font-inter text-sm w-full mt-8">
@@ -144,11 +142,9 @@ function HomeContent() {
               <img src={darkMode ? "/images/moon.svg" : "/images/sun-icon.svg"} alt={darkMode ? "Dark mode" : "Light mode"} className="w-5 h-5 mr-2" />
               {darkMode ? "Dark mode" : "Light mode"}
             </button>
-            <Link href="https://github.com/VriaA/rate-my-employer" className="w-full">
-            <button className={`mb-4 w-full text-left flex items-center justify-start ${darkMode ? 'hover:bg-gray-800' : 'hover:bg-gray-100'} rounded-lg transition duration-150 ease-in-out p-2`}>
+            <Link href="https://github.com/VriaA/rate-my-employer" className={`mb-4 w-full text-left flex items-center justify-start ${darkMode ? 'hover:bg-gray-800' : 'hover:bg-gray-100'} rounded-lg transition duration-150 ease-in-out p-2`}>
               <img src={darkMode ? "/images/signOut_dark.svg" : "/images/signOut.svg"} alt="Light mode" className="w-5 h-5 mr-2" />
               Learn More
-            </button>
             </Link>
             
           
