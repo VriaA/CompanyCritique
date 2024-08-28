@@ -2,11 +2,12 @@
 import { MessagesContext } from "@/contexts/MessagesContext"
 import { useContext } from "react"
 import Loader from "./Loader"
+import DarkLoader from "./dark_loader" // Changed from "./dark_loader"
 import Markdown from "react-markdown"
 
 export default function Messages({ darkMode }) {
   const { messages, message, setMessage, sendMessage } = useContext(MessagesContext)
-
+  
   const handleSendMessage = () => {
     if (message.trim()) {
       sendMessage();
@@ -33,7 +34,7 @@ export default function Messages({ darkMode }) {
                           {message.content ? (
                             <Markdown>{message.content}</Markdown>
                           ) : (
-                            <Loader />
+                            darkMode ? <DarkLoader /> : <Loader />
                           )}
                         </div>
                       </div>
@@ -48,7 +49,7 @@ export default function Messages({ darkMode }) {
                       {message.content ? (
                         <Markdown>{message.content}</Markdown>
                       ) : (
-                        <Loader />
+                        darkMode ? <DarkLoader /> : <Loader />
                       )}
                     </div>
                   </div>
@@ -62,9 +63,9 @@ export default function Messages({ darkMode }) {
         <div className="w-3/5 h-12 p-[1px] bg-gradient-to-r from-[#F6A856] via-[#8091F6] to-[#5661F6] rounded-lg">
           <div className={`relative flex items-center w-full h-full ${darkMode ? 'bg-gray-800' : 'bg-white'} rounded-lg`}>
             <div className="absolute left-2 flex items-center">
-              <button className="p-1">
+              <span className="p-1">
                 <img src="images/brain.png" alt="Brain" className="w-5 h-5 drop-shadow-md" />
-              </button>
+              </span>
             </div>
             <input
               type="text"
