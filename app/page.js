@@ -44,8 +44,6 @@ function HomeContent() {
   };
 
   const handleClearConversations = () => {
-    // Clear local storage if you're storing conversations there
-    localStorage.removeItem('conversations');
     
     // Refresh the page
     window.location.reload();
@@ -125,7 +123,6 @@ function HomeContent() {
             <span className={`relative z-10 font-inter text-sm ${darkMode ? 'text-white' : 'text-black'}`}>New chat</span>
           </button>
           <nav className="font-inter text-sm w-full">
-            {/* Add your sidebar items here */}
             <Link href="/" className={`mb-5 w-full text-left flex items-center justify-start ${darkMode ? 'hover:bg-gray-800' : 'hover:bg-gray-100'} rounded-lg transition duration-150 ease-in-out p-2`}>
               <img src={darkMode ? "/images/ChatText_dark.svg" : "/images/ChatText.svg"} alt="Google" className="w-5 h-5 mr-2" />
               Current Chat
@@ -133,7 +130,6 @@ function HomeContent() {
           </nav>
           <div className="flex-grow"></div>
           <div className="flex flex-col items-center justify-center font-inter text-sm w-full mt-8">
-            {/* Add bottom sidebar items here */}
             <button onClick={handleClearConversations} className={`mb-4 w-full text-left flex items-center justify-start ${darkMode ? 'hover:bg-gray-800' : 'hover:bg-gray-100'} rounded-lg transition duration-150 ease-in-out p-2`}>
               <img src={darkMode ? "/images/delete_dark.svg" : "/images/delete.svg"} alt="Clear" className="w-5 h-5 mr-2" />
               Clear conversations
