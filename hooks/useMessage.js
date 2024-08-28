@@ -1,17 +1,18 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 
 export default function useMessage() {
   const [messages, setMessages] = useState([])
   const [message, setMessage] = useState("")
+  const messagesEndRef = useRef(null)
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+  }
 
   useEffect(() => {
-    // SCROLL TO THE BOTTOM WHEN A NEW MESSAGE IS ADDED
-    window.scroll({
-      top: document.body.scrollHeight,
-      behavior: "smooth",
-    })
+    scrollToBottom()
   }, [messages])
 
   async function sendMessage(event) {
@@ -87,5 +88,5 @@ export default function useMessage() {
     }
   }
 
-  return { messages, setMessages, message, setMessage, sendMessage }
+  return { messages, setMessages, message, setMessage, sendMessage, messagesEndRef }
 }

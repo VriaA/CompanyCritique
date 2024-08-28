@@ -1,12 +1,21 @@
 "use client"
 import { MessagesContext } from "@/contexts/MessagesContext"
-import { useContext } from "react"
+import { useContext, useRef, useEffect } from "react"
 import Loader from "./Loader"
 import DarkLoader from "./dark_loader" // Changed from "./dark_loader"
 import Markdown from "react-markdown"
 
 export default function Messages({ darkMode }) {
   const { messages, message, setMessage, sendMessage } = useContext(MessagesContext)
+  const messagesEndRef = useRef(null)
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+  }
+
+  useEffect(() => {
+    scrollToBottom()
+  }, [messages])
   
   const handleSendMessage = () => {
     if (message.trim()) {
@@ -34,7 +43,7 @@ export default function Messages({ darkMode }) {
                           {message.content ? (
                             <Markdown>{message.content}</Markdown>
                           ) : (
-                            darkMode ? <DarkLoader /> : <Loader />
+                            darkMode ? <Loader /> : <DarkLoader />
                           )}
                         </div>
                       </div>
@@ -49,7 +58,7 @@ export default function Messages({ darkMode }) {
                       {message.content ? (
                         <Markdown>{message.content}</Markdown>
                       ) : (
-                        darkMode ? <DarkLoader /> : <Loader />
+                        darkMode ? <Loader /> : <DarkLoader />
                       )}
                     </div>
                   </div>
@@ -57,6 +66,7 @@ export default function Messages({ darkMode }) {
               </div>
             )
           })}
+          <div ref={messagesEndRef} />
         </div>
       </div>
       <div className="sticky bottom-0 p-4 flex justify-center bg-inherit">
