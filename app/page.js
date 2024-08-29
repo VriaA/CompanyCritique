@@ -40,7 +40,6 @@ function HomeContent() {
     setMessages(() => []);
   };
 
-
   const handleButtonClick = (message) => {
     setMessage(message);
     sendMessage();
@@ -100,15 +99,6 @@ function HomeContent() {
                      before:absolute before:inset-0 before:bg-gradient-to-r before:from-[#5661F6] before:via-[#8091F6] before:to-[#F6A856] before:rounded-[12px]
                      flex items-center justify-center group`}>
             <span className={`absolute inset-[1px] ${darkMode ? 'bg-[#111111]' : 'bg-white'} rounded-[11px] z-0`}></span>
-            <svg width="0" height="0" className="absolute">
-              <defs>
-                <linearGradient id="icon-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#5661F6" />
-                  <stop offset="50%" stopColor="#8091F6" />
-                  <stop offset="100%" stopColor="#F6A856" />
-                </linearGradient>
-              </defs>
-            </svg>
             <img src="/images/plus-circle-svgrepo-com.svg" alt="Plus" className="w-4 h-4 mr-2 relative z-10 filter-gradient" />
             <span className={`relative z-10 font-inter text-sm ${darkMode ? 'text-white' : 'text-black'}`}>New chat</span>
           </button>

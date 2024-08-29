@@ -2,7 +2,7 @@
 import { MessagesContext } from "@/contexts/MessagesContext"
 import { useContext, useRef, useEffect } from "react"
 import Loader from "./Loader"
-import DarkLoader from "./dark_loader" // Changed from "./dark_loader"
+import DarkLoader from "./dark_loader"
 import Markdown from "react-markdown"
 
 export default function Messages({ darkMode }) {
@@ -54,7 +54,7 @@ export default function Messages({ darkMode }) {
                     <span className="flex-shrink-0 mr-2">
                       <img src="images/3d_avatar_24.svg" alt="User" className="w-7 h-7" />
                     </span>
-                    <div className={darkMode ? "text-sm text-white" : "text-sm text-black"}> {/* Changed text color to white */}
+                    <div className={darkMode ? "text-sm text-white" : "text-sm text-black"}>
                       {message.content ? (
                         <Markdown>{message.content}</Markdown>
                       ) : (

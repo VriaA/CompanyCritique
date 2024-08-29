@@ -1,19 +1,10 @@
 "use client"
 
-import { useEffect, useState, useRef } from "react"
+import { useState } from "react"
 
 export default function useMessage() {
   const [messages, setMessages] = useState([])
   const [message, setMessage] = useState("")
-  const messagesEndRef = useRef(null)
-
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
-  }
-
-  useEffect(() => {
-    scrollToBottom()
-  }, [messages])
 
   async function sendMessage(event) {
     if (event && event.preventDefault) {
@@ -30,21 +21,6 @@ export default function useMessage() {
     ])
 
     try {
-      // ---- TO DO ----------------------------------------------> RAG
-      //   const rag_response = await fetch("/api/rag", {
-      //     method: "POST",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     body: JSON.stringify({ question: message }),
-      //   });
-
-      //   if (!rag_response.ok) {
-      //     throw new Error("Network response was not ok");
-      //   }
-
-      //   const { prompt } = await rag_response.json();
-      // --------------------------------------------------------
 
       const response = await fetch("/api/chat", {
         method: "POST",
@@ -88,5 +64,5 @@ export default function useMessage() {
     }
   }
 
-  return { messages, setMessages, message, setMessage, sendMessage, messagesEndRef }
+  return { messages, setMessages, message, setMessage, sendMessage }
 }
