@@ -4,7 +4,6 @@ import Messages from "@/components/Messages";
 import { MessagesContextProvider, MessagesContext } from "@/contexts/MessagesContext";
 import Link from 'next/link';
 import { useState, useEffect, useContext } from 'react';
-//import SearchField from "@/components/SearchField";
 
 export default function Home() {
   return (
@@ -17,6 +16,7 @@ export default function Home() {
 function HomeContent() {
   const [darkMode, setDarkMode] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const {setMessage, sendMessage, setMessages} = useContext(MessagesContext);
 
   useEffect(() => {
     // Apply the dark mode class to the body when the component mounts
@@ -35,25 +35,15 @@ function HomeContent() {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  const messagesContext = useContext(MessagesContext);
-
-  const handleSendMessage = () => {
-    if (messagesContext && messagesContext.message && messagesContext.message.trim()) {
-      messagesContext.sendMessage();
-    }
-  };
-
   const handleClearConversations = () => {
-    
-    // Refresh the page
-    window.location.reload();
+    setMessage("");
+    setMessages(() => []);
   };
+
 
   const handleButtonClick = (message) => {
-    if (messagesContext) {
-      messagesContext.setMessage(message);
-      messagesContext.sendMessage();
-    }
+    setMessage(message);
+    sendMessage();
   };
 
   return (
@@ -142,8 +132,6 @@ function HomeContent() {
               <img src={darkMode ? "/images/signOut_dark.svg" : "/images/signOut.svg"} alt="Light mode" className="w-5 h-5 mr-2" />
               Learn More
             </Link>
-            
-          
           </div>
         </div>
       </aside>
