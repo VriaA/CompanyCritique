@@ -1,4 +1,4 @@
-export default function Loader() {
+export default function DarkLoader() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9,7 +9,7 @@ export default function Loader() {
         cx={18}
         cy={12}
         r={0}
-        fill="white">
+        fill="black">
         <animate
           attributeName="r"
           begin={0.67}
@@ -23,7 +23,7 @@ export default function Loader() {
         cx={12}
         cy={12}
         r={0}
-        fill="white">
+        fill="black">
         <animate
           attributeName="r"
           begin={0.33}
@@ -37,7 +37,7 @@ export default function Loader() {
         cx={6}
         cy={12}
         r={0}
-        fill="white">
+        fill="black">
         <animate
           attributeName="r"
           begin={0}
@@ -50,4 +50,3 @@ export default function Loader() {
     </svg>
   )
 }
-

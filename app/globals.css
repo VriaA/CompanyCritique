@@ -21,4 +21,13 @@
   @apply ml-3;
 }
 
+body.dark {
+  background-color: #111111;
+  color: #fff;
+}
+
+.dark .bg-white {
+  background-color: #1F1F1F;
+}
+
 @tailwind utilities;

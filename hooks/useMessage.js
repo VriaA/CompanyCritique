@@ -1,23 +1,17 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 export default function useMessage() {
   const [messages, setMessages] = useState([])
   const [message, setMessage] = useState("")
 
-  useEffect(() => {
-    // SCROLL TO THE BOTTOM WHEN A NEW MESSAGE IS ADDED
-    window.scroll({
-      top: document.body.scrollHeight,
-      behavior: "smooth",
-    })
-  }, [messages])
-
   async function sendMessage(event) {
-    event.preventDefault()
+    if (event && event.preventDefault) {
+      event.preventDefault();
+    }
 
-    if (!message.trim()) return
+    if (!message.trim()) return;
 
     setMessage("") // Clear the message after it's sent
     setMessages((messages) => [
@@ -27,21 +21,6 @@ export default function useMessage() {
     ])
 
     try {
-      // ---- TO DO ----------------------------------------------> RAG
-      //   const rag_response = await fetch("/api/rag", {
-      //     method: "POST",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     body: JSON.stringify({ question: message }),
-      //   });
-
-      //   if (!rag_response.ok) {
-      //     throw new Error("Network response was not ok");
-      //   }
-
-      //   const { prompt } = await rag_response.json();
-      // --------------------------------------------------------
 
       const response = await fetch("/api/chat", {
         method: "POST",
