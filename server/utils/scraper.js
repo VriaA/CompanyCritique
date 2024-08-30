@@ -49,7 +49,7 @@ async function ScrapeAllDataFromIndeed(url, user_agent) {
         const postions_data = salaries('div.cmp-SalaryCategoryCard').map((i, el) => {
             const position = salaries(el).find('span.cmp-SalaryCategoryCard-title').text();
             const average_salary = salaries(el).find('span.cmp-SalaryCategoryCard-SalaryValue').text();
-            return {position, average_salary};
+            return { position, average_salary };
         }).get();
         output['positions_data'] = postions_data;
     } catch (error) {
@@ -60,7 +60,7 @@ async function ScrapeAllDataFromIndeed(url, user_agent) {
     return output;
 }
 
-async function ScrapeBasicInfoFromIndeed(url, user_agent){
+async function ScrapeBasicInfoFromIndeed(url, user_agent) {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     const output = {};
@@ -89,11 +89,11 @@ async function ScrapeBasicInfoFromIndeed(url, user_agent){
     return output;
 }
 
-async function ScrapeReviewsDataFromIndeed(url, user_agent){
+async function ScrapeReviewsDataFromIndeed(url, user_agent) {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setUserAgent(user_agent);
-    try{
+    try {
         await page.goto(url + '/reviews');
         const reviews_content = await page.content();
         const reviews = cheerio.load(reviews_content);
@@ -104,37 +104,37 @@ async function ScrapeReviewsDataFromIndeed(url, user_agent){
             const review_rating = reviews(el).find('button.css-szf5tt.e1wnkr790').text();
             return { review_id, review_text, review_rating };
         }).get();
-        return {reviews_data};
+        return { reviews_data };
     } catch (error) {
         console.log("error happened while fetching the data from the website", error);
     }
 }
 
-async function ScrapeSalariesDataFromIndeed(url, user_agent){
+async function ScrapeSalariesDataFromIndeed(url, user_agent) {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setUserAgent(user_agent);
-    try{
+    try {
         await page.goto(url + '/salaries');
         const salaries_content = await page.content();
         const salaries = cheerio.load(salaries_content);
         const postions_data = salaries('div.cmp-SalaryCategoryCard').map((i, el) => {
             const position = salaries(el).find('span.cmp-SalaryCategoryCard-title').text();
             const average_salary = salaries(el).find('span.cmp-SalaryCategoryCard-SalaryValue').text();
-            return {position, average_salary};
+            return { position, average_salary };
         }).get();
-        return {postions_data};
+        return { postions_data };
     } catch (error) {
         console.log("error happened while fetching the data from the website", error);
     }
 }
 
-function ScrapeDataFromGlassdoor(url){
-    return {"message": "Scraping data from Glassdoor is not supported yet"};
+function ScrapeDataFromGlassdoor(url) {
+    return { "message": "Scraping data from Glassdoor is not supported yet" };
 }
 
 
-async function URLMaker (param) {
+async function URLMaker(param) {
     return `https://www.indeed.com/cmp/${param}`;
 }
 
@@ -142,31 +142,31 @@ exports.ScrapeDataOfCompany = async (req, res) => {
     const user_agent = req.headers['user-agent'];
     const url = await URLMaker(req.params.company);
     const domain = url.split('/')[2].split('.')[1];
-    try{
+    try {
         if (domain in supported_websites) {
             const data = await ScrapeAllDataFromIndeed(url, user_agent);
             res.json(data);
         } else {
-            res.json({message: "This website is not supported yet"});
+            res.json({ message: "This website is not supported yet" });
         }
     } catch (error) {
-        res.json({message: "An error happened while fetching the data"});
-    }   
+        res.json({ message: "An error happened while fetching the data" });
+    }
 }
 
 exports.ScrapeCompanyReviews = async (req, res) => {
     const user_agent = req.headers['user-agent'];
     const url = await URLMaker(req.params.company);
     const domain = url.split('/')[2].split('.')[1];
-    try{
+    try {
         if (domain in supported_websites) {
             const data = await ScrapeReviewsDataFromIndeed(url, user_agent);
             res.json(data);
         } else {
-            res.json({message: "This website is not supported yet"});
+            res.json({ message: "This website is not supported yet" });
         }
     } catch (error) {
-        res.json({message: "An error happened while fetching the data"});
+        res.json({ message: "An error happened while fetching the data" });
     }
 }
 
@@ -174,15 +174,15 @@ exports.ScrapeCompanySalaries = async (req, res) => {
     const user_agent = req.headers['user-agent'];
     const url = await URLMaker(req.params.company);
     const domain = url.split('/')[2].split('.')[1];
-    try{
+    try {
         if (domain in supported_websites) {
             const data = await ScrapeSalariesDataFromIndeed(url, user_agent);
             res.json(data);
         } else {
-            res.json({message: "This website is not supported yet"});
+            res.json({ message: "This website is not supported yet" });
         }
     } catch (error) {
-        res.json({message: "An error happened while fetching the data"});
+        res.json({ message: "An error happened while fetching the data" });
     }
 }
 
@@ -190,14 +190,14 @@ exports.ScrapeCompanyBasicInfo = async (req, res) => {
     const user_agent = req.headers['user-agent'];
     const url = await URLMaker(req.params.company);
     const domain = url.split('/')[2].split('.')[1];
-    try{
+    try {
         if (domain in supported_websites) {
             const data = await ScrapeBasicInfoFromIndeed(url, user_agent);
             res.json(data);
         } else {
-            res.json({message: "This website is not supported yet"});
+            res.json({ message: "This website is not supported yet" });
         }
     } catch (error) {
-        res.json({message: "An error happened while fetching the data"});
+        res.json({ message: "An error happened while fetching the data" });
     }
 }

@@ -14,8 +14,11 @@
 
 const express = require('express');
 const router = express.Router();
-const {ScrapeDataOfCompany, ScrapeCompanyReviews, ScrapeCompanySalaries, ScrapeCompanyBasicInfo} = require('../utils/scraper');
+const { ScrapeDataOfCompany, ScrapeCompanyReviews, ScrapeCompanySalaries, ScrapeCompanyBasicInfo } = require('../utils/scraper');
 
+router.get('/test', (req, res) => {
+    res.send('Test route is working!');
+});
 router.get('/:company', ScrapeDataOfCompany);
 router.get('/:company/reviews', ScrapeCompanyReviews);
 router.get('/:company/salaries', ScrapeCompanySalaries);
