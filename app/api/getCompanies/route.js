@@ -23,10 +23,9 @@ export async function POST(req) {
 
         // Get the response text from the completion object
         const responseText = completion.choices[0]?.message?.content
-        console.log(responseText)
         return new NextResponse(responseText || "No response from OpenAI.", { status: 200 })
     } catch (error) {
-        console.error('Error fetching completion:', error)
+        alert('Error fetching completion:', error)
         return new NextResponse("Error processing request.", { status: 500 })
     }
 }

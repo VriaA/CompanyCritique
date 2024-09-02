@@ -51,7 +51,7 @@ const ScrapeAllDataFromIndeed = async (url, user_agent) => {
             return { position, average_salary };
         }).get();
     } catch (error) {
-        console.error('Error while fetching data from Indeed:', error);
+        alert('Error while fetching data from Indeed:', error);
     } finally {
         await browser.close();
     }
@@ -80,7 +80,7 @@ async function ScrapeBasicInfoFromIndeed(url, user_agent) {
         output['overall_rating'] = rating;
         output['founded_in'] = founded;
     } catch (error) {
-        console.error('Error while fetching basic info from Indeed:', error);
+        alert('Error while fetching basic info from Indeed:', error);
     }
 
     return output;
@@ -103,7 +103,7 @@ async function ScrapeReviewsDataFromIndeed(url, user_agent) {
             }).get()
         };
     } catch (error) {
-        console.error('Error while fetching reviews data from Indeed:', error);
+        alert('Error while fetching reviews data from Indeed:', error);
     }
 }
 
@@ -124,7 +124,7 @@ async function ScrapeSalariesDataFromIndeed(url, user_agent) {
             }).get()
         };
     } catch (error) {
-        console.error('Error while fetching salaries data from Indeed:', error);
+        alert('Error while fetching salaries data from Indeed:', error);
     }
 }
 
@@ -163,7 +163,7 @@ export async function POST(req) {
             results = 'Here is some scraped data from our system to help you:\n' + results
         }
     } catch (error) {
-        console.error('Error while processing companies:', error);
+        alert('Error while processing companies:', error);
         results = 'An error occurred while processing the companies.';
     }
     return new NextResponse(results);
