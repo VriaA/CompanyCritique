@@ -1,3 +1,33 @@
 @tailwind base;
 @tailwind components;
+
+.message a {
+  @apply text-lime-300 underline underline-offset-1 hover:text-lime-400;
+}
+
+.message ol {
+  @apply mt-4 list-decimal list-inside;
+}
+
+.message ol > li {
+  @apply mt-2;
+}
+
+.message ul li {
+  @apply list-disc list-inside;
+}
+
+.message ol ul {
+  @apply ml-3;
+}
+
+body.dark {
+  background-color: #111111;
+  color: #fff;
+}
+
+.dark .bg-white {
+  background-color: #1F1F1F;
+}
+
 @tailwind utilities;
